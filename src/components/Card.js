@@ -6,7 +6,7 @@ const Card = ({ imgSource, name, id, country, lang }) => {
 
 
     return (
-        <div className="p-4 md:w-1/3 flex flex-col text-center items-center cursor-pointer " onClick={e => { navigate(`/${id}`); window.scrollTo(0, 0) }}>
+        <div className="p-4 md:w-1/3 flex flex-col text-center items-center cursor-pointer " onClick={e => { navigate(`tv?tv=${id}`); window.scrollTo(0, 0) }}>
         <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
             <img src={imgSource} alt={id} className="w-10 h-10" />
         </div>

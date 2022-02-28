@@ -1,8 +1,26 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import Cards from "./components/Cards";
 import Stream from "./Stream";
+import { useMemo } from "react";
 
-function App() {
+function useQuery() {
+  const { search } = useLocation();
+
+  return useMemo(() => new URLSearchParams(search), [search]);
+}
+
+export default function App () {
+  return (
+    <Router>
+      <Inside />
+    </Router>
+  )
+}
+
+function Inside() {
+
+  let query = useQuery()
+
   return (
     <>
       <header className="bg-gradient-to-r from-green-500 via-yellow-500 to-pink-500 body-font">
@@ -12,14 +30,10 @@ function App() {
           </a>
         </div>
       </header>
-      <Router>
-        <div>
-          <Routes>
-            <Route exact path="/tv" element={<Cards />} />
-            <Route path="/tv/:id" element={<Stream />} />
-          </Routes>
-        </div>
-      </Router>
+      <div>
+        <Child tv={query.get("tv")} />
+        <Cards />
+      </div>
       <footer className="bg-gradient-to-r from-green-500 via-yellow-500 to-pink-500 body-font">
         <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-black" href="/">
@@ -34,4 +48,11 @@ function App() {
   );
 }
 
-export default App;
+let Child = ({tv}) =>  {
+  return (
+    <>
+    {
+      tv ? <Stream id={tv} />: <></>
+    }</>
+  )
+}

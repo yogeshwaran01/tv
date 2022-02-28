@@ -15,8 +15,8 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route exact path="/" element={<Cards />} />
-            <Route path="/:id" element={<Stream />} />
+            <Route exact path="/tv" element={<Cards />} />
+            <Route path="/tv/:id" element={<Stream />} />
           </Routes>
         </div>
       </Router>

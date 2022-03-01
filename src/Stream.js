@@ -1,5 +1,4 @@
 import channels from "./channels"
-import Cards from "./components/Cards"
 import Player from "./components/Player"
 
 
@@ -14,7 +13,6 @@ const Stream = ({ id }) => {
                     <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
                         <Player url={required.url} />
                     </div>
-                    <Cards />
                 </div>
             </section> : <></>}
         </div>
